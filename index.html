@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <!-- <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" name="myFruit" id="myFruit" list="mySuggestion" />
+    <datalist id="mySuggestion">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Blackberry</option>
+      <option>Blueberry</option>
+      <option>Lemon</option>
+      <option>Lychee</option>
+      <option>Peach</option>
+      <option>Pear</option>
+    </datalist> -->
+
+    <select id="select-action" name="select-action" size="6">
+      <optgroup label="gase behavoir">
+        <option selected value="molecules"
+          >(1)Gas consist of tiny particles of matter that are in constant
+          motion. The particles are constantly colliding with each other and the
+          walls of the container</option
+        >
+        <option value="speed-temperature"
+          >(2)The average speed of gas particles is depentent on the temperature
+          of the gas,click here, and push the temperature slider to see a
+          demostration</option
+        >
+        <option value="compresibility"
+          >(3)Compressibility: click here,then push the volume slider below to
+          decrease the volume.</option
+        >
+        <option value="compresibility2"
+          >(4)Compressibility:another way to compress the gas is to increase the
+          number of molecules while keeping other variables constant,similar to
+          filling your cooking gas cylinder</option
+        >
+        <option value="charles"
+          >(5)Charles Law: The volume of a gas is directly proportional to
+          absolute temperature at constant pressure and amount of
+          molecules</option
+        >
+        <option value="avogadro"
+          >(5)Avogadro's Law: The volume of a gas is directly proportional to
+          number of molecules at constant pressure and absolute
+          temperature</option
+        >
+      </optgroup>
+      <optgroup label="Gas calculations">
+        <option value="boyles-calculation">Boyle's Law calculations</option>
+        <option value="charles-calculation">Charles's Law calculations</option>
+        <option value="gaylusac-calculation"
+          >Gay-Lussac's Law calculations</option
+        >
+        <option value="avogadro-calculation"
+          >Avogadro’s law Law calculations
+        </option>
+        <option value="combined-calculation"
+          >Combined gas law calculations
+        </option>
+        <option value="ideal-calculation">Ideal gas law calculations </option>
+        <option value="dalton-calculation"
+          >Dalton's law of partial pressure calculations
+        </option>
+      </optgroup>
+      <optgroup label="Preliminary Calculations">
+        <option value="getsigfig">
+          Given a number recognize the number of signicant figure in it
+        </option>
+        <option value="cal-sigfig">
+          Given a number, change it to the required number of signicant figures
+        </option>
+        <option value="addsub-sigfig">
+          Addition and subtraction of significant figures
+        </option>
+        <option value="multiDivi-sigfig">
+          Multiplication and Division of significant figures
+        </option>
+      </optgroup>
+    </select>
+
+    <!-- demostrations -->
+    <canvas id="myCanvas" class="demo-elem" width="480" height="320"></canvas>
+
+    <!-- Temperature Slider -->
+    <label for="temp" class="demo-elem">Slide to change temperature: </label>
+    <input
+      class="demo-elem"
+      type="range"
+      name="temp"
+      id="temp"
+      min="10"
+      max="200"
+      step="10"
+      value="170"
+      disabled
+    />
+    <output class="temp-output demo-elem" for="temp"></output>
+
+    <!-- volume slider -->
+    <label for="volume" class="demo-elem">Slide to change volume: </label>
+    <input
+      class="demo-elem"
+      type="range"
+      name="volume"
+      id="volume"
+      min="100"
+      max="2000"
+      step="100"
+      value="400"
+      disabled
+    />
+    <output class="volume-output demo-elem" for="volume"></output>
+    <!-- molecules slider -->
+    <label for="mole" class="demo-elem"
+      >Slide to change number of molecules:
+    </label>
+    <input
+      class="demo-elem"
+      type="range"
+      name="mole"
+      id="mole"
+      min="1"
+      max="1000"
+      step="1"
+      value="5"
+    />
+    <output class="mole-output demo-elem" for="mole"></output>
+    <p class="pressure demo-elem"></p>
+    <p class="time-output demo-elem"></p>
+    <!-- calculation elements -->
+    <p
+      id="instruction-cal"
+      class="cal-elem"
+      title="click the checkAnswer button to solve the question on the screen.
+To see the next question click the next Example button.
+To  solve it click the checkAnswer button again.
+Repeat this process to see and solve all provided examples
+To solve your own question, enter the input in the same format used in those examples:
+p1=numberUnit,v1=?Unit,p2=numberUnit,p2=numberUnit  for a single question.
+You can solve multiple questions at a time.To do so, seperate individual question input by semicolon like so:
+p1=numberUnit,v1=?Unit,p2=numberUnit,p2=numberUnit;p1=numberUnit,v1=numberUnit,p2=?Unit,p2=numberUnit;p1=numberUnit,v1=numberUnit,p2=numberUnit,p2=?Unit"
+    >
+      Instruction: hover here to see
+    </p>
+
+    <button id="pre-example-button" class="cal-elem">
+      Previous Example
+    </button>
+    <button id="next-Example-button" class="cal-elem">Next Example</button>
+    <button id="check-answer-button" class="cal-elem">Check Answer</button>
+    <button id="clear-screen-button" class="cal-elem">Duster</button>
+    <div contenteditable="true" id="textarea-screen" class="cal-elem"></div>
+
+    <div
+      type="text"
+      placeholder="p1=?Unit,v1=numberUnit,p2=numberUnit,v2=numberUnit"
+      id="input-question"
+      class="cal-elem"
+      contenteditable="true"
+    ></div>
+    <!-- <div id="textarea-screen2" class="cal-elem"></div> -->
+
+    <p id="summary-output" class="cal-elem"></p>
+    <p id="detail-output" class="cal-elem"></p>
+
+    <!-- Select action -->
+    <!-- <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" name="myFruit" id="myFruit" list="mySuggestion" />
+    <datalist id="mySuggestion">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Blackberry</option>
+      <option>Blueberry</option>
+      <option>Lemon</option>
+      <option>Lychee</option>
+      <option>Peach</option>
+      <option>Pear</option>
+    </datalist> -->
+    <script src="js/main.js" type="module"></script>
+  </body>
+</html>
